@@ -150,7 +150,6 @@ def server_static(filename):
 def server_statics(filenames,caty):
     return static_file(filenames, root='files/'+caty)
 
-
 @route('/css/layouts/<filenames>')
 def server_statics(filenames):
     return static_file(filenames, root='css/layouts')
@@ -169,9 +168,10 @@ def do_upload():
 	save_path=tarpat
 	upload.save(save_path)
 	redirect("/list/"+category)
-@route('/m3u')
-def info():
-	return template('m3u')
+@route('/playlist/<server>')
+def playlist(server):
+	response.set_header('Content-Type', 'text/plain;charset=utf-8')
+	return template('playlist',server=server)
 
 @route('/info')
 def info():
