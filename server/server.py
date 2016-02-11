@@ -170,7 +170,7 @@ def do_upload():
 	redirect("/list/"+category)
 @route('/playlist/<server>')
 def playlist(server):
-	response.set_header('Content-Type', 'text/plain;charset=utf-8')
+	response.set_header('Content-Type', 'audio/x-mpegurl;charset=utf-8')
 	return template('playlist',server=server)
 
 @route('/info')
