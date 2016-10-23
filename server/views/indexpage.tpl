@@ -19,7 +19,9 @@
     <label>Lütfen Giriş Yapın</label>
     <fieldset>
         
-        <label for="password">Parola</label>
+        <label for="user">Kullanıcı Adı</label>
+        <input id="user" name="user"  placeholder="user">
+        <label for="password">Şifre</label>
         <input id="password" name="password" type="password" placeholder="Password">
 		<button type="submit" class="pure-button pure-button-primary">Giriş Yap</button>
     </fieldset>
