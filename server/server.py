@@ -18,6 +18,7 @@ parser = SafeConfigParser()
 with codecs.open('system.ini', 'r') as f:
 	parser.readfp(f)
 parola=parser.get('user', 'password')
+kullanici=parser.get('user', 'user')
 anahtar=parser.get('user', 'key')
 	
 def catlist():
@@ -127,12 +128,17 @@ def mainupvideo(catvideo,video):
 @route('/login')
 @post('/login') 
 def login():
-	password = request.forms.get('password') 
+	password = request.forms.get('password')
+        user = request.forms.get('user')
 	if password == parola:
-		response.set_cookie("account", password, secret=anahtar)
-		redirect('/')
+	        if user == kullanici:
+		   response.set_cookie("account", password, secret=anahtar)
+		   redirect('/')
+	        else:
+		   redirect('/')
 	else:
 		redirect('/')
+	
 @route('/addfolder')
 @post('/addfolder') 
 def folderadd():
@@ -184,7 +190,6 @@ debug(True)
 
 run(host="0.0.0.0", port=parser.get('network', 'port'))
 	
-
 
 
 
